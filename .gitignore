@@ -27,4 +27,4 @@ dist-ssr
 !*.yaml
 !*.yml
 .env
-.package-lock.json
+package-lock.json

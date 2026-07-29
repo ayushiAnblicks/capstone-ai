@@ -1,0 +1,41 @@
+{
+  "name": "capstone-ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayushiAnblicks/capstone-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ayushiAnblicks/capstone-ai/issues"
+  },
+  "homepage": "https://github.com/ayushiAnblicks/capstone-ai#readme",
+  "dependencies": {
+    "@types/node": "^26.1.2",
+    "ajv": "^8.20.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "mysql2": "^3.23.2",
+    "openai": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.2.0",
+    "nodemon": "^3.1.14"
+  }
+}

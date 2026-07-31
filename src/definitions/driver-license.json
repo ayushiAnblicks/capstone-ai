@@ -1,0 +1,56 @@
+{
+  "documentType": "Driver License",
+  "description": "Extract structured information from a driver license.",
+  "prompt": "Extract License Number, Name, DOB, Address, Issue Date, and Expiry Date. If a value cannot be found, return null. Do not invent information.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "licenseNumber": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "dob": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "address": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "issueDate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "expiryDate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "licenseNumber",
+      "name",
+      "dob",
+      "address",
+      "issueDate",
+      "expiryDate"
+    ],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result"
+}

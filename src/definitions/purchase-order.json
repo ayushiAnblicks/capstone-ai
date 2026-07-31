@@ -1,0 +1,96 @@
+{
+  "documentType": "Purchase Order",
+  "description": "Extract structured information from a purchase order.",
+  "prompt": "Extract Purchase Order Number, Order Date, Vendor Name, Customer Name, Items, Taxes, and Total. If a value cannot be found, return null. Do not invent information.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "purchaseOrderNumber": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "orderDate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "vendorName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "customerName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "quantity": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "unitPrice": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "amount": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "description",
+            "quantity",
+            "unitPrice",
+            "amount"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "taxes": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "total": {
+        "type": [
+          "number",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "purchaseOrderNumber",
+      "orderDate",
+      "vendorName",
+      "customerName",
+      "items",
+      "taxes",
+      "total"
+    ],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result"
+}

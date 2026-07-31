@@ -1,0 +1,77 @@
+{
+  "documentType": "Utility Bill",
+  "description": "Extract structured information from a utility bill.",
+  "prompt": "Extract Account Number, Customer Name, Service Address, Billing Period, Bill Date, Due Date, Utility Provider, Total Amount, and Currency. If a value cannot be found, return null. Do not invent information.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "accountNumber": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "customerName": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "serviceAddress": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "billingPeriod": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "billDate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "dueDate": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "utilityProvider": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "totalAmount": {
+        "type": [
+          "number",
+          "null"
+        ]
+      },
+      "currency": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "required": [
+      "accountNumber",
+      "customerName",
+      "serviceAddress",
+      "billingPeriod",
+      "billDate",
+      "dueDate",
+      "utilityProvider",
+      "totalAmount",
+      "currency"
+    ],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result"
+}

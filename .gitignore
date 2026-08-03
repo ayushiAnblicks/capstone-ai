@@ -27,4 +27,5 @@ dist-ssr
 !*.yaml
 !*.yml
 .env
+*.pdf
 package-lock.json

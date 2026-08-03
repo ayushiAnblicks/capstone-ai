@@ -18,7 +18,8 @@ export async function classifyDocument(
   ocrText: string,
   definitions: DefinitionRegistryRow[]
 ): Promise<string> {
-  const allowedIdentifiers = definitions.map((d) => d.documentTypeIdentifier);
+  const UNKNOWN_TYPE = "unknown";
+  const allowedIdentifiers = [...definitions.map((d) => d.documentTypeIdentifier), UNKNOWN_TYPE];
 
   const definitionsSummary = definitions
     .map((d) => {
@@ -31,6 +32,7 @@ export async function classifyDocument(
     "You are a document classification engine.",
     "Classify the provided document text into exactly one of the supported document types below.",
     "Use the classification hints as guidance for identifying each type.",
+    `If the document does not clearly match any type below, classify it as "${UNKNOWN_TYPE}" rather than forcing the closest match.`,
     "",
     definitionsSummary,
   ].join("\n");
@@ -68,6 +70,10 @@ export async function classifyDocument(
 
   if (!allowedIdentifiers.includes(parsed.documentType)) {
     throw new ApiError(502, `Classifier returned an unsupported document type: ${parsed.documentType}`);
+  }
+
+  if (parsed.documentType === UNKNOWN_TYPE) {
+    throw new ApiError(422, "Document does not match any supported document type");
   }
 
   return parsed.documentType;

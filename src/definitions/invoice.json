@@ -1,0 +1,40 @@
+{
+  "displayName": "Invoice",
+  "classificationExamples": [
+    "Contains an Invoice Number and Invoice Date near the top of the document",
+    "Has a Bill To section and a Vendor or Remit To section",
+    "Lists line items with description, quantity, unit price and line total",
+    "Shows a subtotal, tax amount and a final Total Due"
+  ],
+  "extractionPrompt": "Extract the following fields from the invoice text and return JSON only: Invoice Number, Invoice Date, Vendor Name, Customer Name, line Items (each with description, quantity, unit price and line total), Taxes and Total. Use null for any field that cannot be found in the text.",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "invoiceNumber": { "type": ["string", "null"] },
+      "invoiceDate": { "type": ["string", "null"], "description": "ISO 8601 date (YYYY-MM-DD) if determinable" },
+      "vendorName": { "type": ["string", "null"] },
+      "customerName": { "type": ["string", "null"] },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "description": { "type": ["string", "null"] },
+            "quantity": { "type": ["number", "null"] },
+            "unitPrice": { "type": ["number", "null"] },
+            "lineTotal": { "type": ["number", "null"] }
+          },
+          "required": ["description", "quantity", "unitPrice", "lineTotal"],
+          "additionalProperties": false
+        }
+      },
+      "taxes": { "type": ["number", "null"] },
+      "total": { "type": ["number", "null"] }
+    },
+    "required": ["invoiceNumber", "invoiceDate", "vendorName", "customerName", "items", "taxes", "total"],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result",
+  "version": 1,
+  "isActive": true
+}

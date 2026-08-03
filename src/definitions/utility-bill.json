@@ -1,0 +1,27 @@
+{
+  "displayName": "Utility Bill",
+  "classificationExamples": [
+    "Issued by a utility or service provider such as electricity, water, gas or internet",
+    "Contains an Account Number and a Service Address",
+    "Shows a billing period start and end date",
+    "Shows an Amount Due and a payment Due Date"
+  ],
+  "extractionPrompt": "Extract the following fields from the utility bill text and return JSON only: Account Number, Service Provider, Service Address, Billing Period Start, Billing Period End, Due Date and Amount Due. Use null for any field that cannot be found in the text.",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "accountNumber": { "type": ["string", "null"] },
+      "serviceProvider": { "type": ["string", "null"] },
+      "serviceAddress": { "type": ["string", "null"] },
+      "billingPeriodStart": { "type": ["string", "null"] },
+      "billingPeriodEnd": { "type": ["string", "null"] },
+      "dueDate": { "type": ["string", "null"] },
+      "amountDue": { "type": ["number", "null"] }
+    },
+    "required": ["accountNumber", "serviceProvider", "serviceAddress", "billingPeriodStart", "billingPeriodEnd", "dueDate", "amountDue"],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result",
+  "version": 1,
+  "isActive": true
+}

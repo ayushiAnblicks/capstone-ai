@@ -26,9 +26,9 @@ export async function processDocument(
     mimeType: input.mimeType,
   });
 
-  const definitions = await getActiveDefinitionList();
+  const definitions = getActiveDefinitionList();
   const documentType = await classifyDocument(ocrText, definitions);
-  const definition = await getDefinitionOrThrow(documentType);
+  const definition = getDefinitionOrThrow(documentType);
 
   const extractedData = await extractStructuredData(ocrText, definition);
   validateExtractedData(definition, extractedData);

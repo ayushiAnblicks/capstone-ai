@@ -1,11 +1,11 @@
 /**
- * A single row from `definition_registry`, mapped to camelCase.
+ * A single document type definition loaded from `src/definitions/*.json`.
  * This is the sole source of truth the processing pipeline consults to
  * classify and extract a given document type - no document fields are
- * hardcoded in application code.
+ * hardcoded in application code. `documentTypeIdentifier` is derived from
+ * the definition's file name, not stored redundantly inside the file.
  */
 export interface DefinitionRegistryRow {
-  id: number;
   documentTypeIdentifier: string;
   displayName: string;
   classificationExamples: string[];
@@ -14,6 +14,4 @@ export interface DefinitionRegistryRow {
   databaseTable: string;
   version: number;
   isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 }

@@ -1,0 +1,26 @@
+{
+  "displayName": "Driver License",
+  "classificationExamples": [
+    "A government issued identification card",
+    "Contains a License Number, full Name and Date of Birth",
+    "Shows an Address, Issue Date and Expiry Date",
+    "Typically includes a photo and physical description not relevant to text extraction"
+  ],
+  "extractionPrompt": "Extract the following fields from the driver license text and return JSON only: License Number, full Name, Date of Birth, Address, Issue Date and Expiry Date. Use null for any field that cannot be found in the text.",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "licenseNumber": { "type": ["string", "null"] },
+      "fullName": { "type": ["string", "null"] },
+      "dateOfBirth": { "type": ["string", "null"], "description": "ISO 8601 date (YYYY-MM-DD) if determinable" },
+      "address": { "type": ["string", "null"] },
+      "issueDate": { "type": ["string", "null"], "description": "ISO 8601 date (YYYY-MM-DD) if determinable" },
+      "expiryDate": { "type": ["string", "null"], "description": "ISO 8601 date (YYYY-MM-DD) if determinable" }
+    },
+    "required": ["licenseNumber", "fullName", "dateOfBirth", "address", "issueDate", "expiryDate"],
+    "additionalProperties": false
+  },
+  "databaseTable": "document_result",
+  "version": 1,
+  "isActive": true
+}

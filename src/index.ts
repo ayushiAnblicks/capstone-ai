@@ -1,9 +1,17 @@
 import express from "express";
+import cors from "cors";
 import { apiRouter } from "./api/routes/index.js";
 import { errorHandlerMiddleware } from "./api/middleware/errorHandler.middleware.js";
 import { config } from "./config/env.js";
 
 const app = express();
+
+app.use(cors({
+  origin: config.corsOrigin,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  exposedHeaders: ["Content-Disposition"],
+}));
 
 app.use(express.json());
 

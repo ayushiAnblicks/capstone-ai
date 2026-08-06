@@ -29,3 +29,6 @@ dist-ssr
 .env
 *.pdf
 package-lock.json
+classification
+.kiro
+.env.example
